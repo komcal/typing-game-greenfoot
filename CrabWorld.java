@@ -13,8 +13,9 @@ public class CrabWorld extends World
      * Constructor for objects of class CrabWorld.
      * 
      */
-    public int maxWorm = 20;
     static String recentKey;
+    static String[] words = {"hello", "test", "kuy", "sus"};
+    static int wordSize = words.length;
     public CrabWorld()
     {    
         super(400, 800, 1);
@@ -23,7 +24,7 @@ public class CrabWorld extends World
     }
     public void act() {
         recentKey = Greenfoot.getKey();
-        if(random(100) == 98 || random(100) == 50){
+        if(isWordCanGenerate()){
             ganerateTextBox();
         }
     }
@@ -36,15 +37,19 @@ public class CrabWorld extends World
     {
         StringInputBox inputBox = new StringInputBox();
         addObject(inputBox,200,780);
-
-        TextBox textbox = new TextBox();
-        addObject(textbox,100,10);
     }
-    public void ganerateTextBox(){
+    private boolean isWordCanGenerate() {
+        return (random(90) == 80);
+    }
+    private void ganerateTextBox(){
         TextBox textbox = new TextBox();
         addObject(textbox,random(300)+50,1);
     }
-    public int random(int num){
+    public static int random(int num){
         return Greenfoot.getRandomNumber(num);
+    }
+    public static String getText() {
+        int random = random(wordSize);
+        return words[random];
     }
 }

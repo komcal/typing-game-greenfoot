@@ -4,7 +4,7 @@ import java.awt.Color;
 public class TextBox extends Actor
 {
     
-    public String text = "Hello";
+    public String text = "";
     public String input = "";
     
     public int MAX_INPUT_LENGTH = text.length();
@@ -16,6 +16,7 @@ public class TextBox extends Actor
      
     private void updateImage()
     {
+        text = CrabWorld.getText();
         GreenfootImage image = new GreenfootImage(15*MAX_INPUT_LENGTH, 30);
         image.setColor(new Color(128, 0, 0));
         image.fill();
@@ -29,21 +30,32 @@ public class TextBox extends Actor
     public void act()
     {
         moveObject();
+        onReceiveKey();
+    }
+    private void onReceiveKey() {
         String key = CrabWorld.recentKey;
         if (key == null) return;
-        if ("enter".equals(key) && input.length() > 0)
+        else if ("enter".equals(key) && input.length() > 0)
         {
-            checkTextSame();
+            isTextMustRemove();
             input = "";
-
             return;
         }
-        if ("backspace".equals(key) && input.length() > 0) input = input.substring(0, input.length() - 1);
-        if ("escape".equals(key)) input = "";
-        if ("space".equals(key)) input = " ";
-        if (key.length() == 1 && input.length() < MAX_INPUT_LENGTH) input += key;
+        else if ("backspace".equals(key) && input.length() > 0){
+            input = input.substring(0, input.length() - 1);
+        }
+        else if ("escape".equals(key)) {
+            input = "";
+        }
+        else if ("space".equals(key)) {
+            key = " ";
+        }
+        
+        if (key.length() == 1 && input.length() < MAX_INPUT_LENGTH){
+            input += key;
+        }
     }
-    public void checkTextSame() {
+    public void isTextMustRemove() {
         if(input.equals(text)){
             System.out.println("text is same");
             removeItSelf();
@@ -58,6 +70,6 @@ public class TextBox extends Actor
     public void moveObject() {
         int x = getX();
         int y = getY();
-        setLocation(x, y+5);
+        setLocation(x, y+3);
     }
 }
