@@ -3,13 +3,15 @@ import java.awt.Color;
  
 public class TextBox extends Actor
 {
-    static final int MAX_INPUT_LENGTH = 20;
+    
     public String text = "Hello";
-     
+    public String input = "";
+    
+    public int MAX_INPUT_LENGTH = text.length();
+    
     public TextBox()
     {
         updateImage();
-        text = "";
     }
      
     private void updateImage()
@@ -26,18 +28,36 @@ public class TextBox extends Actor
  
     public void act()
     {
-        String key = Greenfoot.getKey();
+        moveObject();
+        String key = CrabWorld.recentKey;
         if (key == null) return;
-        if ("enter".equals(key) && text.length() > 0)
+        if ("enter".equals(key) && input.length() > 0)
         {
-            System.out.println(text);
-            text = "";
-            updateImage();
+            checkTextSame();
+            input = "";
+
             return;
         }
-        if ("backspace".equals(key) && text.length() > 0) text = text.substring(0, text.length() - 1);
-        if ("escape".equals(key)) text = "";
-        if ("space".equals(key)) key = " ";
-        if (key.length() == 1 && text.length() < MAX_INPUT_LENGTH) text += key;
+        if ("backspace".equals(key) && input.length() > 0) input = input.substring(0, input.length() - 1);
+        if ("escape".equals(key)) input = "";
+        if ("space".equals(key)) input = " ";
+        if (key.length() == 1 && input.length() < MAX_INPUT_LENGTH) input += key;
+    }
+    public void checkTextSame() {
+        if(input.equals(text)){
+            System.out.println("text is same");
+            removeItSelf();
+        }
+        else {
+            System.out.println("not correct");
+        }
+    }
+    public void removeItSelf() {
+        getWorld().removeObject(this);
+    }
+    public void moveObject() {
+        int x = getX();
+        int y = getY();
+        setLocation(x, y+5);
     }
 }

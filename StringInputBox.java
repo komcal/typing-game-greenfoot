@@ -26,13 +26,15 @@ public class StringInputBox extends Actor
  
     public void act()
     {
-        String key = Greenfoot.getKey();
+        String key = CrabWorld.recentKey;
         if (key == null) return;
         if ("enter".equals(key) && text.length() > 0)
         {
             System.out.println(text);
+            
             text = "";
             updateImage();
+
             return;
         }
         if ("backspace".equals(key) && text.length() > 0) text = text.substring(0, text.length() - 1);
