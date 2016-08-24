@@ -14,7 +14,10 @@ public class CrabWorld extends World
      * 
      */
     static String recentKey;
-    static String[] words = {"hello", "test", "kuy", "sus"};
+    static String[] words = {"console.log", "getElementbyid", "innerHTML",
+        "var", "Object.prototype", "str.length", "str.indexOf",
+        "new Date()", "new Array()", "promise", "()=>{}", "describe", "reduce",
+        "map"};
     static int wordSize = words.length;
     public CrabWorld()
     {    
@@ -37,7 +40,11 @@ public class CrabWorld extends World
     {
         StringInputBox inputBox = new StringInputBox();
         addObject(inputBox,200,780);
+        TextBox textbox = new TextBox();
+        addObject(textbox,103,251);
+        textbox.setLocation(182,178);
     }
+
     private boolean isWordCanGenerate() {
         return (random(90) == 80);
     }

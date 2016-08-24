@@ -5,7 +5,8 @@ public class StringInputBox extends Actor
 {
     static final int MAX_INPUT_LENGTH = 20;
     public String text = "Enter a Word";
-     
+    public String ftext = "Enter a ";
+    public String stext = "Word";
     public StringInputBox()
     {
         updateImage();
@@ -21,6 +22,7 @@ public class StringInputBox extends Actor
         image.fillRect(3, 3, image.getWidth()-6, 24);
         GreenfootImage textImage = new GreenfootImage(text, 24, Color.black, null);
         image.drawImage(textImage, (image.getWidth()-textImage.getWidth())/2, 15-textImage.getHeight()/2);
+        
         setImage(image);
     }
  

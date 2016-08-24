@@ -8,10 +8,10 @@ public class TextBox extends Actor
     public String input = "";
     public String closeText = "lo";
     public int MAX_INPUT_LENGTH = 5;
-    private int speed = 1;
+    
     public TextBox()
     {
-        importText();
+        text = CrabWorld.getText();
         updateImage();
     }
     private void importText(){
@@ -73,6 +73,6 @@ public class TextBox extends Actor
     public void moveObject() {
         int x = getX();
         int y = getY();
-        setLocation(x, y+speed);
+        setLocation(x, y+3);
     }
 }
