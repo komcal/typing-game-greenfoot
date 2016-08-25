@@ -19,6 +19,7 @@ public class CrabWorld extends World
         "new Date()", "new Array()", "promise", "()=>{}", "describe", "reduce",
         "map"};
     static int wordSize = words.length;
+    public static Counter actCounter;
     public CrabWorld()
     {    
         super(400, 800, 1);
@@ -40,11 +41,12 @@ public class CrabWorld extends World
     {
         StringInputBox inputBox = new StringInputBox();
         addObject(inputBox,200,780);
-        TextBox textbox = new TextBox();
-        addObject(textbox,103,251);
-        textbox.setLocation(182,178);
+        actCounter = new Counter();
+        addObject(actCounter,350,20);
     }
-
+    public static Counter getCounter(){
+        return actCounter;
+    }
     private boolean isWordCanGenerate() {
         return (random(90) == 80);
     }

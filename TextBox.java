@@ -23,9 +23,9 @@ public class TextBox extends Actor
         GreenfootImage image = new GreenfootImage(15*MAX_INPUT_LENGTH, 30);
         image.setColor(new Color(128, 0, 0));
         image.fill();
-        image.setColor(Color.lightGray);
+        image.setColor(Color.black);
         image.fillRect(3, 3, image.getWidth()-6, 24);
-        GreenfootImage textImage = new GreenfootImage(text, 24, Color.black, null);
+        GreenfootImage textImage = new GreenfootImage(text, 24, Color.white, null);
         image.drawImage(textImage, (image.getWidth()-textImage.getWidth())/2, 15-textImage.getHeight()/2);
         setImage(image);
     }
@@ -69,6 +69,8 @@ public class TextBox extends Actor
     }
     public void removeItSelf() {
         getWorld().removeObject(this);
+        Counter counter = CrabWorld.getCounter();
+        counter.setValue(counter.getValue() + 1);
     }
     public void moveObject() {
         int x = getX();
