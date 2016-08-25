@@ -76,6 +76,11 @@ public class Counter extends Actor
             Greenfoot.stop();
         }
     }
+    public void isLevelUp(){
+        if(value % 2 == 0){
+            CrabWorld.levelUp();
+        }
+    }
     /**
      * Add a new score to the current counter value.  This will animate
      * the counter over consecutive frames until it reaches the new value.
@@ -100,6 +105,7 @@ public class Counter extends Actor
     {
         target = newValue;
         value = newValue;
+        isLevelUp();
         updateImage();
     }
     

@@ -20,7 +20,8 @@ public class CrabWorld extends World
         "map", "getElementsByClassName", "split", "join", "filter", "import"};
     static int wordSize = words.length;
     public static Counter actCounter;
-    private boolean isGenerating = false;
+    public int timer = 0;
+    public static int timeChecker = 200;
     public CrabWorld()
     {    
         super(400, 800, 1);
@@ -31,8 +32,8 @@ public class CrabWorld extends World
         recentKey = Greenfoot.getKey();
         if(isWordCanGenerate()){
             ganerateTextBox();
-            isGenerating = false;
         }
+        timer++;
     }
     
     /**
@@ -52,8 +53,8 @@ public class CrabWorld extends World
         return actCounter;
     }
     private boolean isWordCanGenerate() {
-        if(random(100) == 90 && !isGenerating){
-            isGenerating = true;
+
+       if(timer % timeChecker == 0){
             return true;
         }
         else {
@@ -70,5 +71,8 @@ public class CrabWorld extends World
     public static String getText() {
         int random = random(wordSize);
         return words[random];
+    }
+    public static void levelUp(){
+        timeChecker -= 10;
     }
 }

@@ -18,4 +18,6 @@ comment7.params=num
 comment7.target=int\ random(int)
 comment8.params=
 comment8.target=java.lang.String\ getText()
-numComments=9
+comment9.params=
+comment9.target=void\ levelUp()
+numComments=10
