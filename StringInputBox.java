@@ -31,9 +31,7 @@ public class StringInputBox extends Actor
         String key = CrabWorld.recentKey;
         if (key == null) return;
         if ("enter".equals(key) && text.length() > 0)
-        {
-            System.out.println(text);
-            
+        {   
             text = "";
             updateImage();
 

@@ -17,9 +17,10 @@ public class CrabWorld extends World
     static String[] words = {"console.log", "getElementbyid", "innerHTML",
         "var", "Object.prototype", "str.length", "str.indexOf",
         "new Date()", "new Array()", "promise", "()=>{}", "describe", "reduce",
-        "map"};
+        "map", "getElementsByClassName", "split", "join", "filter", "import"};
     static int wordSize = words.length;
     public static Counter actCounter;
+    private boolean isGenerating = false;
     public CrabWorld()
     {    
         super(400, 800, 1);
@@ -30,6 +31,7 @@ public class CrabWorld extends World
         recentKey = Greenfoot.getKey();
         if(isWordCanGenerate()){
             ganerateTextBox();
+            isGenerating = false;
         }
     }
     
@@ -43,12 +45,20 @@ public class CrabWorld extends World
         addObject(inputBox,200,780);
         actCounter = new Counter();
         addObject(actCounter,350,20);
+        Stopper stopper = new Stopper();
+        addObject(stopper,200, 750);
     }
     public static Counter getCounter(){
         return actCounter;
     }
     private boolean isWordCanGenerate() {
-        return (random(90) == 80);
+        if(random(100) == 90 && !isGenerating){
+            isGenerating = true;
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     private void ganerateTextBox(){
         TextBox textbox = new TextBox();

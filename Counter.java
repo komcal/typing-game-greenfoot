@@ -69,8 +69,13 @@ public class Counter extends Actor
             value--;
             updateImage();
         }
+        isStopGame();
     }
-
+    public void isStopGame(){
+        if(value < 0){
+            Greenfoot.stop();
+        }
+    }
     /**
      * Add a new score to the current counter value.  This will animate
      * the counter over consecutive frames until it reaches the new value.

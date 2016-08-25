@@ -60,11 +60,7 @@ public class TextBox extends Actor
     }
     public void isTextMustRemove() {
         if(input.equals(text)){
-            System.out.println("text is same");
             removeItSelf();
-        }
-        else {
-            System.out.println("not correct");
         }
     }
     public void removeItSelf() {
