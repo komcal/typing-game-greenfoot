@@ -17,7 +17,7 @@ public class CrabWorld extends World
     static String[] words = {"console.log", "getElementbyid", "innerHTML",
         "var", "Object.prototype", "str.length", "str.indexOf",
         "new Date()", "new Array()", "promise", "()=>{}", "describe", "reduce",
-        "map", "getElementsByClassName", "split", "join", "filter", "import"};
+        "map", "split", "join", "filter", "import"};
     static int wordSize = words.length;
     public static Counter actCounter;
     public int timer = 0;

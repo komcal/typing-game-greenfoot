@@ -60,6 +60,7 @@ public class TextBox extends Actor
     }
     public void isTextMustRemove() {
         if(input.equals(text)){
+            Greenfoot.playSound("beep.wav");
             removeItSelf();
         }
     }
