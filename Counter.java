@@ -63,17 +63,18 @@ public class Counter extends Actor
     {
         if (value < target) {
             value++;
-            updateImage();
         }
         else if (value > target) {
             value--;
-            updateImage();
         }
+        updateImage();
         isStopGame();
     }
     public void isStopGame(){
         if(value < 0){
             Greenfoot.stop();
+            GameOver gameOver = new GameOver();
+            getWorld().addObject(gameOver,200, 350);
         }
     }
     public void isLevelUp(){
